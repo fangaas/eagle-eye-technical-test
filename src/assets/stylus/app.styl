@@ -1,6 +1,10 @@
+$c-black = #000;
 $c-white = #FFF;
+$c-hover-grey = #E8E8E8;
+$c-hover-black = #313131;
 $c-bg-grey = #B1B1B1;
-$c-border-grey = #505050;
+$c-border-grey = #BFBFBF;
+$c-error = #FF2C2C;
 
 body {
     margin: 0px;
@@ -27,6 +31,7 @@ body {
     max-height: 500px;
     background-color: $c-white;
     overflow: hidden;
+    position: relative;
 }
 
 .slide-wrapper {
@@ -49,11 +54,26 @@ body {
 }
 
 .button {
-    background-color: #000;
+    background-color: $c-black;
     color: $c-white;
+    transition: background-color .2s;
+    
+    &:hover {
+        background-color: $c-hover-black;
+    }
 }
 
 .login {
+    &__input,
+    &__button,
+    &__message {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        margin-bottom: 10px;
+        outline: 0;
+    }
+    
     &__input {
         border: solid 1px $c-border-grey;
         padding: 10px;
@@ -61,8 +81,10 @@ body {
     
     &__button {
         opacity: 0.2;
-        // pointer-events: none;*/
+        //pointer-events: none;
         transition: opacity .5s;
+        margin-bottom: 5px;
+        cursor: default;
         
         &--active {
             pointer-events: all;
@@ -71,13 +93,104 @@ body {
         }
     }
     
-    &__input,
-    &__button {
-        width: 100%;
-        max-width: 200px;
-        padding: 10px;
-        margin-bottom: 10px;
+    &__message {
+        text-align: center;
+        height: 34px;
     }
+}
+
+.list {
+    &__container {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__item {
+        width: 100%;
+        height: 50px;
+        border: 1px solid $c-border-grey;
+        border-top: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        padding: 20px;
+        cursor: pointer;
+        transition: background-color .2s;
+        
+        &:hover {
+            background-color: $c-hover-grey;
+        }
+        
+        &:first-child {
+            border-top: 1px solid $c-border-grey;
+        }
+    }
+    
+    &__item-number {
+        padding-right: 15px;
+    }
+    
+    &__item-name {
+        padding-right: 10px;
+    }
+    
+    &__item-id {
+        position: relative;
+        top: 2px;
+    }
+}
+
+.details {
+    &__container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        span {
+            margin-bottom: 10px;
+            display: block;
+        }
+    }
+    
+    &__button {
+        display: block;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        align-self: flex-start;
+    }
+    
+    &__list {
+        max-width: 100%;
+    }
+}
+
+.logout-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 20px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.logout-progress {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    cursor: default;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
 
 @require('_resets');

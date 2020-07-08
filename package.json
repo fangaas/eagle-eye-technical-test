@@ -47,7 +47,8 @@
       "no-trailing-spaces": "off",
       "no-debugger": "off",
       "semi": "off",
-      "no-unused-vars": "off"
+      "no-unused-vars": "off",
+      "handle-callback-err": "off"
     }
   },
   "browserslist": [

@@ -71,7 +71,6 @@ export default {
     },
 
     mounted () {
-
         new gsap.timeline()
         .set(this.$refs.slideContainer, {
             scale: 1.2
@@ -80,10 +79,10 @@ export default {
             opacity: 0,
             y: 15
         })
-        .to(this.$refs.slideContainer, .2, {
+        .to(this.$refs.slideContainer, 0.2, {
             scale: 1
         }, 'a')
-        .to(this.$refs.slideLogin, .4, {
+        .to(this.$refs.slideLogin, 0.4, {
             opacity: 1,
             y: 1
         }, 'a+=.1')
@@ -91,31 +90,7 @@ export default {
 
     methods: {
 
-        newLoginUser () {
-            const params = new URLSearchParams(window.location.search)
-            const code = params.get('code');
-
-            const url = `https://rest.cameramanager.com/oauth/token?grant_type=authorization_code&scope=read&code=${code}&redirect_uri=http://localhost:8080&client_id=${this.clientId}&client_secret=${this.clientSecret}`;
-
-            this.axios.post(url, {
-                crossDomain: true,
-                headers: {
-                    Authorization: 'Basic 3H1Bf6mCctIgpCuzvrnyekf3VhAUEnKJ',
-                    Accept: 'application/json'
-                }
-            })
-            .then(response => {
-                callback(response);
-            })
-            .catch(error => {
-            })
-
-        },
-
-        loginUser () {
-            // this.username = 'onlinedemo@cameramanager.com';
-            // this.password = 'demo1234';
-
+        loginUser () { 
             this.loginErrorMessage = '';
 
             const url = `https://rest.cameramanager.com/oauth/token?grant_type=password&scope=read&username=${this.username}&password=${this.password}&client_id=${this.clientId}&client_secret=${this.clientSecret}`;

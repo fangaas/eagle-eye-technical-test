@@ -48,7 +48,8 @@
       "no-debugger": "off",
       "semi": "off",
       "no-unused-vars": "off",
-      "handle-callback-err": "off"
+      "handle-callback-err": "off",
+      "new-cap": "off"
     }
   },
   "browserslist": [
